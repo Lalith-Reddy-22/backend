@@ -1,0 +1,225 @@
+@baseUrl = https://localhost:7248
+
+# =============================================
+# EMPLOYEE
+# =============================================
+
+### Get all employees
+GET {{baseUrl}}/api/employee
+Accept: application/json
+
+###
+
+### Get employee names and IDs (dropdown)
+GET {{baseUrl}}/api/employee/names
+Accept: application/json
+
+###
+
+# =============================================
+# RESOURCE ALLOCATION
+# =============================================
+
+### Tech Team (teamId=1)
+GET {{baseUrl}}/api/resource-allocation?startDate=2026-01-02&endDate=2026-01-20&teamId=1
+Accept: application/json
+
+###
+
+### Creative Team (teamId=2)
+GET {{baseUrl}}/api/resource-allocation?startDate=2026-01-02&endDate=2026-01-20&teamId=2
+Accept: application/json
+
+###
+
+### Content Team (teamId=3)
+GET {{baseUrl}}/api/resource-allocation?startDate=2026-01-02&endDate=2026-01-20&teamId=3
+Accept: application/json
+
+###
+
+### PM Team (teamId=4)
+GET {{baseUrl}}/api/resource-allocation?startDate=2026-01-02&endDate=2026-01-20&teamId=4
+Accept: application/json
+
+###
+
+### AM Team (teamId=8)
+GET {{baseUrl}}/api/resource-allocation?startDate=2026-01-02&endDate=2026-01-20&teamId=8
+Accept: application/json
+
+###
+
+# =============================================
+# REPORTS — Daily Tasks
+# =============================================
+
+### Default today, page 1
+GET {{baseUrl}}/api/reports/daily-reports?todayDate=2026-07-07&pageNumber=1&pageSize=10
+Accept: application/json
+
+###
+
+### Filter by resource name
+GET {{baseUrl}}/api/reports/daily-reports?todayDate=2026-07-07&resourceName=John&pageNumber=1&pageSize=5
+Accept: application/json
+
+###
+
+### Filter by taskId
+GET {{baseUrl}}/api/reports/daily-reports?todayDate=2026-07-07&taskId=101
+Accept: application/json
+
+###
+
+# =============================================
+# REPORTS — Week Utilization by Designation
+# =============================================
+
+### Billable + Non-Billable by designation
+GET {{baseUrl}}/api/reports/week-utilization-designation?startDate=2025-07-21&endDate=2025-07-25
+Accept: application/json
+
+###
+
+# =============================================
+# REPORTS — Week Utilization by Team
+# =============================================
+
+### Billable + Non-Billable by team
+GET {{baseUrl}}/api/reports/week-utilization-team?startDate=2025-07-21&endDate=2025-07-25
+Accept: application/json
+
+###
+
+# =============================================
+# REPORTS — Client Wise Planned Revenue
+# =============================================
+
+### Client wise planned revenue
+GET {{baseUrl}}/api/reports/client-wise-revenue?startDate=2025-07-21&endDate=2025-07-25
+Accept: application/json
+
+###
+
+# =============================================
+# REPORTS — Report Page (6 APIs)
+# =============================================
+
+### API 1 — Projects dropdown
+GET {{baseUrl}}/api/reports/projects-dropdown
+Accept: application/json
+
+###
+
+### API 2 — Task list (All projects)
+GET {{baseUrl}}/api/reports/task-list?empId=5&empType=1&startDate=2026-07-07&endDate=2026-07-11&projectId=0&pageNumber=1&pageSize=10
+Accept: application/json
+
+###
+
+### API 2 — Task list (Specific project + search)
+GET {{baseUrl}}/api/reports/task-list?empId=5&empType=1&startDate=2026-07-07&endDate=2026-07-11&projectId=12&searchText=PROJ001&pageNumber=1&pageSize=10
+Accept: application/json
+
+###
+
+### API 3 — Employee list
+GET {{baseUrl}}/api/reports/employee-list?startDate=2026-07-07&endDate=2026-07-11&pageNumber=1&pageSize=10
+Accept: application/json
+
+###
+
+### API 4 — Project list
+GET {{baseUrl}}/api/reports/project-list?empId=5&empType=1&pageNumber=1&pageSize=10
+Accept: application/json
+
+###
+
+### API 5 — Employee task details (modal)
+GET {{baseUrl}}/api/reports/emp-task-details?employeeId=5&startDate=2026-07-07&endDate=2026-07-11
+Accept: application/json
+
+###
+
+### API 6 — Project task details (modal)
+GET {{baseUrl}}/api/reports/project-task-details?projectId=12&startDate=2026-07-07&endDate=2026-07-11
+Accept: application/json
+
+###
+
+# =============================================
+# LEAVE — Dropdowns
+# =============================================
+
+### Get all teams
+GET {{baseUrl}}/api/leave/teams
+Accept: application/json
+
+###
+
+### Get designations by team ID
+GET {{baseUrl}}/api/leave/designations?teamId=1
+Accept: application/json
+
+###
+
+# =============================================
+# LEAVE — List
+# =============================================
+
+### Get all leaves (paginated)
+GET {{baseUrl}}/api/leave?pageNumber=1&pageSize=10
+Accept: application/json
+
+###
+
+### Filter by team name
+GET {{baseUrl}}/api/leave?teamName=Tech&pageNumber=1&pageSize=10
+Accept: application/json
+
+###
+
+### Get leave by ID
+GET {{baseUrl}}/api/leave/5
+Accept: application/json
+
+###
+
+# =============================================
+# LEAVE — Create
+# =============================================
+
+### Create leave
+POST {{baseUrl}}/api/leave
+Content-Type: application/json
+
+{
+  "teamId": 1,
+  "designation": "DEVELOPER",
+  "billableLeaveHours": 8,
+  "nonBillableLeaveHours": 4,
+  "startDate": "2026-07-07",
+  "endDate": "2026-07-11"
+}
+
+###
+
+# =============================================
+# LEAVE — Update
+# =============================================
+
+### Update leave by ID
+PUT {{baseUrl}}/api/leave/5
+Content-Type: application/json
+
+{
+  "teamId": 1,
+  "designation": "DEVELOPER",
+  "billableLeaveHours": 10,
+  "nonBillableLeaveHours": 6,
+  "startDate": "2026-07-07",
+  "endDate": "2026-07-11"
+}
+
+###
